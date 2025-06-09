@@ -24,6 +24,7 @@ html {
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  overflow-x: hidden; /* Added to prevent horizontal scroll */
 }
 
 .header {
@@ -489,43 +490,6 @@ section {
   color: var(--text-color);
 }
 
-@media(max-width:1000px) {
-  #menu-icon {
-    display: block;
-  }
-  .navbar {
-    position: absolute;
-    top: 100%;
-    right: -100%; /* Hide off-screen */
-    width: 50%;
-    padding: 1rem 3rem;
-    background: rgba(210, 105, 30, 0.8); /* cinnamon with opacity */
-    border-bottom-left-radius: 2rem;
-    border-left: 2px solid var(--main-color);
-    border-bottom: 2px solid var(--main-color);
-    transition: 0.3s ease-in-out;
-  }
-
-  .navbar.active {
-      right: 0; /* Slide in */
-  }
-
-  .navbar a {
-    display: block;
-    font-size: 2rem;
-    margin: 3rem 0;
-    color: var(--bg-color);
-  }
-
-  .contact form .input-group {
-    flex-direction: column;
-  }
-  .contact form .input-box {
-      width: 100%;
-  }
-
-}
-
 .experience {
   background-color: var(--second-bg-color);
   padding: 10rem 15%;
@@ -593,8 +557,6 @@ section {
     margin-bottom: 1rem;
 }
 
-/* === NEW STYLES FOR SKILLS SECTION === */
-
 .skills {
     background-color: var(--bg-color);
 }
@@ -631,7 +593,6 @@ section {
     color: var(--text-color);
 }
 
-/* === MODAL STYLES === */
 .modal {
   display: none;
   position: fixed;
@@ -687,4 +648,101 @@ section {
   font-size: 1.8rem;
   color: var(--text-color);
   line-height: 1.6;
+}
+
+/* =================================================================== */
+/* ============== RESPONSIVE DESIGN & MOBILE FIXES =================== */
+/* =================================================================== */
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+    .header {
+        padding: 4rem 5%;
+    }
+    section {
+        padding: 10rem 5%;
+    }
+    .footer {
+        padding: 5rem 5%;
+    }
+}
+
+@media (max-width: 991px) {
+  #menu-icon {
+    display: block;
+  }
+  .navbar {
+    position: absolute;
+    top: 100%;
+    right: -100%; /* Hide off-screen */
+    width: 50%;
+    padding: 1rem 3%;
+    background: rgba(210, 105, 30, 0.9); /* cinnamon with more opacity */
+    border-bottom-left-radius: 2rem;
+    border-left: 2px solid var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+    transition: 0.4s ease-in-out;
+  }
+
+  .navbar.active {
+      right: 0; /* Slide in */
+  }
+
+  .navbar a {
+    display: block;
+    font-size: 2rem;
+    margin: 3rem 0;
+    color: var(--bg-color);
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+      font-size: 50%; /* Adjust base font size for small devices */
+  }
+
+  /* Fixes stacking and spacing for home and about sections */
+  .home, .about {
+      flex-direction: column;
+      gap: 5rem;
+      text-align: center;
+  }
+
+  .home-content, .about-content {
+      align-items: center;
+      text-align: center;
+  }
+
+  /* Makes hero images larger and centered on mobile */
+  .home-img img, .about-img img {
+      width: 70vw; /* Use a larger viewport width for mobile images */
+      margin-top: 4rem;
+  }
+
+  /* Adjusts padding for all sections to prevent overflow */
+  section {
+      padding: 10rem 3%;
+  }
+
+  /* Fixes the two-column contact form for mobile */
+  .contact form .input-group {
+    flex-direction: column;
+    gap: 0;
+  }
+  .contact form .input-box {
+      width: 100%;
+      gap: 3rem; /* Re-apply gap for vertical stacking */
+  }
+
+  /* Adjusts heading sizes for better readability on small screens */
+  .heading {
+      font-size: 6rem;
+      margin-bottom: 3rem;
+  }
+  .home-content h1 {
+      font-size: 7rem;
+  }
 }
